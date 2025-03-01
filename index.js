@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI('AIzaSyDv7lN5iXebaebJ8nj10g3lOGWyqoESHso'); 
+const genAI = new GoogleGenerativeAI('AIzaSyDv7lN5iXebaebJ8nj10g3lOGWyqoESHso'); // Create client instance
 
 app.post('/api/chat', async (req, res) => {
   try {
@@ -26,5 +26,8 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-const PORT = 5800;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start the server
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
